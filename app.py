@@ -2,6 +2,10 @@ from flask import Flask, Response, render_template, request, jsonify, url_for
 import os
 import live_feed
 import timelapse
+import settings
+
+if not os.path.exists('secrets.txt'):
+    raise FileNotFoundError('secrets.txt not found. Please create this file and add a password hash.')
 
 app = Flask(__name__)
 
@@ -37,6 +41,17 @@ def timelapse_route():
         return jsonify({'video_url': video_url})
     else:
         return jsonify({'error': 'Timelapse video not found.'}), 404
+
+@app.route('/settings', methods=['GET', 'POST'])
+def settings_route():
+    error = None
+    if request.method == 'POST':
+        password = request.form['password']
+        if settings.verify_password(password):
+            return render_template('settings.html')
+        else:
+            error = 'Invalid password.'
+    return render_template('settings.html', error=error)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
