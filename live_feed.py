@@ -18,7 +18,7 @@ def init_camera():
     """
     global camera
     camera = Picamera2()
-    camera.preview_configuration.main.size = (640, 480)
+    camera.preview_configuration.main.size = (1280, 720)
     camera.preview_configuration.main.format = 'RGB888'
     camera.preview_configuration.align()
     camera.configure('preview')
@@ -52,4 +52,4 @@ def gen_frames():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
         
-        time.sleep(0.1)
+        time.sleep(0.05)
