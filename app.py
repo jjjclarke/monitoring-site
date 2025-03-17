@@ -16,5 +16,9 @@ def live_feed_route():
     return Response(live_feed.gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/timelapse')
+def timelapse_route():
+    return render_template('timelapse.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
