@@ -56,7 +56,7 @@ body {
 .video-container {
     margin-top: 20px;
     width: 100%;
-    max-width: 1280px; /* Adjust size as needed */
+    max-width: 960px; /* Adjust size as needed */
 }
 
 img.feed {
