@@ -11,7 +11,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/live_feed')
-def live_feed():
+def live_feed_route():
     # Use the gen_frames function from the live_feed module
     return Response(live_feed.gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
