@@ -18,6 +18,11 @@
 </head>
 <body>
     <div class="content">
+        <div class="settings-icon-container">
+            <a href="{{ url_for('settings_page') }}">
+                <img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings" class="settings-icon">
+            </a>
+        </div>
         <div class="logo-container">
             <img src="{{ url_for('static', filename='images/logo_black.png') }}" alt="Logo" class="logo">
         </div>
