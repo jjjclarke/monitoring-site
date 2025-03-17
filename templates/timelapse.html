@@ -7,11 +7,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/timelapse.css') }}">
 </head>
-<body>  
+<body>
+    <div class="content">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo_black.png') }}" alt="Logo" class="logo">
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('index') }}" class="button">Live Feed</a>
+            <a href="{{ url_for('timelapse_route') }}" class="button">Timelapse</a>
+        </div>
+        <div class="date-selector-container">
+            <label for="date-selector">Select Date:</label>
+            <input type="date" id="date-selector" name="date-selector" class="date-selector">
+        </div>
+    </div>
+    
     <footer>
         Created by James Clarke and Odhrán Sisk
     </footer>
+
+    <script src="{{ url_for('static', filename='js/timelapse.js') }}"></script>
 </body>
 </html>
