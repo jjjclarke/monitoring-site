@@ -56,11 +56,11 @@ body {
 .video-container {
     margin-top: 20px;
     width: 100%;
-    max-width: 800px;
+    max-width: 1280px; /* Adjust size as needed */
 }
 
 img.feed {
-    max-width: 100%;
+    width: 100%;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
