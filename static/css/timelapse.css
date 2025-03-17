@@ -66,6 +66,17 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.video-container {
+    margin-top: 20px;
+    max-width: 80%; /* Adjust the max-width as needed */
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Adjust the max-height as needed */
+}
+
 /* Footer styles */
 footer {
     width: 100%;
