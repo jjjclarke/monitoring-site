@@ -1,13 +1,17 @@
-from flask import Flask, Response, render_template, request, jsonify, url_for
+from flask import Flask, Response, render_template, request, jsonify, url_for, session
 import os
 import live_feed
 import timelapse
 import settings
 
+if not os.path.exists('key.txt'):
+    raise FileNotFoundError('key.txt not found. Please create this file and add a secret key.')
+
 if not os.path.exists('secrets.txt'):
     raise FileNotFoundError('secrets.txt not found. Please create this file and add a password hash.')
 
 app = Flask(__name__)
+app.secret_key = settings.get_secret_key()
 
 # Initialise camera
 live_feed.init_camera()
@@ -48,7 +52,7 @@ def settings_route():
     if request.method == 'POST':
         password = request.form['password']
         if settings.verify_password(password):
-            return render_template('settings.html')
+            session['authenticated'] = True
         else:
             error = 'Invalid password.'
     return render_template('settings.html', error=error)
