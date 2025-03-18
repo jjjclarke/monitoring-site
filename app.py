@@ -1,8 +1,16 @@
 from flask import Flask, Response, render_template, request, jsonify, url_for, session
 import os
-import live_feed
 import timelapse
 import settings
+
+# Here, check if the camera is connected to the Raspberry Pi
+# This is just for debugging on my own laptop, and could be removed
+camera_unavailable = False
+try:
+    import live_feed
+    live_feed.init_camera() # Start the camera
+except ModuleNotFoundError:
+    camera_unavailable = True
 
 if not os.path.exists('key.txt'):
     raise FileNotFoundError('key.txt not found. Please create this file and add a secret key.')
@@ -13,18 +21,18 @@ if not os.path.exists('secrets.txt'):
 app = Flask(__name__)
 app.secret_key = settings.get_secret_key()
 
-# Initialise camera
-live_feed.init_camera()
-
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', camera_unavailable=camera_unavailable)
 
 @app.route('/live_feed')
 def live_feed_route():
-    # Use the gen_frames function from the live_feed module
-    return Response(live_feed.gen_frames(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    if camera_unavailable:
+        return render_template('index.html', camera_unavailable=True)
+    else:
+        # Use the gen_frames function from the live_feed module
+        return Response(live_feed.gen_frames(),
+                        mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/timelapse')
 def timelapse_page():

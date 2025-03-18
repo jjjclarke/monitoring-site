@@ -27,7 +27,11 @@
         </div>
         <div class="video-container">
             <h2>Live Feed</h2>
-            <img src="{{ url_for('live_feed_route') }}" alt="Live Camera Feed" class="feed">
+            {% if camera_unavailable %}
+                <img src="{{ url_for('static', filename='images/camera_unavailable.webp') }}" alt="Camera Unavailable" class="feed">
+            {% else %}
+                <img src="{{ url_for('live_feed_route') }}" alt="Live Camera Feed" class="feed">
+            {% endif %}
         </div>
     </div>
     
