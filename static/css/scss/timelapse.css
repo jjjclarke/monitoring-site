@@ -62,15 +62,26 @@ footer {
   margin-top: 20px;
 }
 
-.video-container {
+.date-selector-container {
   margin-top: 20px;
-  width: 100%;
-  max-width: 960px;
+  margin-bottom: 20px;
 }
 
-img.feed {
-  width: 100%;
+.date-selector {
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}/*# sourceMappingURL=index.css.map */
+}
+
+.video-container {
+  margin-top: 20px;
+  max-width: 80%;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+}/*# sourceMappingURL=timelapse.css.map */

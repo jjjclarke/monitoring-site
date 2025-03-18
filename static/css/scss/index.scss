@@ -1,0 +1,14 @@
+@import 'shared';
+
+.video-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 960px;
+}
+
+img.feed {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
