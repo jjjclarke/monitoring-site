@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/timelapse.css') }}">
 </head>
 <body>
+    <a href="{{ url_for('settings_route') }}" class="settings-icon">
+        <img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings">
+    </a>
+
     <div class="content">
         <div class="logo-container">
             <img src="{{ url_for('static', filename='images/logo_black.png') }}" alt="Logo" class="logo">
