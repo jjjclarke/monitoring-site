@@ -15,7 +15,7 @@ try:
     logger.info('Camera initialised successfully.')
 except ModuleNotFoundError:
     camera_unavailable = True
-    logger.warning('Camera is unavailable. Live feed will not be available.')
+    logger.warning('Camera is unavailable. Live feed will be disabled.')
 
 if not os.path.exists('key.txt'):
     logger.error('Secret key not found. Please refer to the GitHub page for instructions on setting up a secret key.')
@@ -38,7 +38,6 @@ def index():
 def live_feed_route():
     logger.info('Request received for live feed.')
     if camera_unavailable:
-        logger.warning('Camera is unavailable. Live feed will display a placeholder image.')
         return render_template('index.html', camera_unavailable=True)
     else:
         # Use the gen_frames function from the live_feed module
