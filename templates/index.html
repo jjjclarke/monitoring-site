@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUS - Project 3 Website</title>
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('settings_route') }}" class="settings-icon">
+        <img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings">
+    </a>
+
+    <div class="content">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo_black.png') }}" alt="Logo" class="logo">
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('index') }}" class="button">Live Feed</a>
+            <a href="{{ url_for('timelapse_page') }}" class="button">Timelapse</a>
+        </div>
+        <div class="video-container">
+            <h2>Live Feed</h2>
+            {% if camera_unavailable %}
+                <img src="{{ url_for('static', filename='images/camera_unavailable.webp') }}" alt="Camera Unavailable" class="feed">
+            {% else %}
+                <img src="{{ url_for('live_feed_route') }}" alt="Live Camera Feed" class="feed">
+            {% endif %}
+        </div>
+    </div>
+    
+    <footer>
+        Created by James Clarke and Odhrán Sisk
+    </footer>
+</body>
+</html>
